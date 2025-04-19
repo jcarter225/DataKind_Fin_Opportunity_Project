@@ -9,6 +9,17 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
 from matplotlib import patches as mpatches
+import os
+
+# Set your desired path here
+path = '/Users/justincarter/Documents/Post Graduation Materials/DataKind Projects/MarApr2025Financial/Phillipines FEIS Survey/All Files 2023'
+
+# Change the working directory
+os.chdir(path)
+
+# Verify the change
+print("Current Working Directory: ", os.getcwd())
+
 
 survey = pd.read_csv('FIES PUF 2023 Volume2 Household Summary.CSV')
 meta = pd.read_excel('fies_2023_vol2_metadata(dictionary).xlsx')
@@ -156,59 +167,105 @@ plt.show()
 
 
 
+#=============================================================================
+#======Percentage of households receiving financial support from abroad=======
+#=============================================================================
+abroad_df = survey.copy()
+
+abroad_df = abroad_df[['Household ID', 'Province', 'Cash Receipts, Support, etc. from Abroad',
+                       ]]
+
+#create binary variable to represent presence or lack of financial support from abroad
+binary_lambda = lambda x: 1 if x > 0 else 0 
+
+abroad_df['Abroad Support?'] = abroad_df['Cash Receipts, Support, etc. from Abroad']\
+    .apply(binary_lambda)
+
+#get counts of each province in dataset
+province_counts = abroad_df['Province'].value_counts()
+province_counts = province_counts.sort_index()
+
+#group data by province and turn back into dataframe
+abroad_province_df =abroad_df.groupby('Province')['Abroad Support?'].sum().reset_index()
+
+#add province counts to abroad_province_df
+abroad_province_df['Prov Count'] = abroad_province_df['Province'].map(province_counts)
+
+abroad_province_df['Abroad Support %'] = round(abroad_province_df['Abroad Support?'] / abroad_province_df['Prov Count'] * 100, 2)
+
+#get country average abroad support percentage
+country_abroad_support = round(sum(abroad_province_df['Abroad Support?'] / abroad_province_df['Prov Count']), 2)
+
+print(country_abroad_support) #average is 22.65%
 
 
 
+def bp(df, r1, r2):
+# ======================Create a horizontal bar plot===========================
+    #df is data being used
+    #r1 is the start of the range that I want to make the barplot for
+    #r2 is the end value that I want to make the barplot for
+
+    #create heatmap for bar chart for easier viewing
+    
+    #normalize data range for heatmap
+    normalize = plt.Normalize(df['Abroad Support %'].min(),
+                           df['Abroad Support %'].max())
+    
+    #create colormap to apply to bar charts
+    cmap = plt.cm.get_cmap('coolwarm')
+    
+    
+    #map income values to colors
+    df['Color'] = df['Abroad Support %'].apply(lambda x: cmap(normalize(x)))
+    
+    
+    fig, ax = plt.subplots(figsize=(8.5,11), dpi = 300)
+    sns.barplot(x="Abroad Support %", y="Province", data=df.iloc[r1:r2],
+                palette=df['Color'][r1:r2].to_list())
+    
+    
+    #Add a vertical line for the "Entire Country Average"
+    plt.axvline(x=country_abroad_support, 
+                color='red', linestyle='--', label="Percentage of Country Obtaining Support")
+    
+    #create color gradient legend
+    high_patch = mpatches.Patch(color=[0.705673158, 0.01555616, 0.150232812, 1.0], label='High Support %')
+    low_patch = mpatches.Patch(color=[0.2298057, 0.298717966, 0.753683153, 1.0], label='Low Support %')
+    legend_handles = [high_patch, low_patch, mpatches.Patch(color='red', label='Country Average')]
+    ax.legend(handles=legend_handles, loc='upper right', title='Legend')
+    
+    #Titles and labels
+    ax.set_title('Percentage of Filipino Households Receiving Remittances from Abroad By Province', fontsize=14)
+    ax.set_xlabel('Percentage Receiving Remittances', fontsize=12)
+    ax.set_ylabel('Province', fontsize=12)
+    
+    #Show the plot
+    plt.xlim(right=100) #keep x axis the same between charts
+    sns.despine(top=True)
+    plt.show()
 
 
 
+bp(abroad_province_df, 0, 30)
+
+bp(abroad_province_df, 31, 61)
+
+bp(abroad_province_df, 61, -1)
 
 
+ordered_abroad_province_df = abroad_province_df.sort_values('Abroad Support %')
 
+print('The Provinces with the lowest percentage of households receiving remittances from abroad are:')
+print(f'{ordered_abroad_province_df["Province"].values [0]} at {ordered_abroad_province_df["Abroad Support %"].values [0]}%')
+print(f'{ordered_abroad_province_df["Province"].values [1]} at {ordered_abroad_province_df["Abroad Support %"].values [1]}%')
+print(f'{ordered_abroad_province_df["Province"].values [2]} at {ordered_abroad_province_df["Abroad Support %"].values [2]}%')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print()
+print('The Provinces with the highest percentage of households receiving remittances from abroad are')
+print(f'{ordered_abroad_province_df["Province"].values [-1]} at {ordered_abroad_province_df["Abroad Support %"].values [-1]}%')
+print(f'{ordered_abroad_province_df["Province"].values [-2]} at {ordered_abroad_province_df["Abroad Support %"].values [-2]}%')
+print(f'{ordered_abroad_province_df["Province"].values [-3]} at {ordered_abroad_province_df["Abroad Support %"].values [-3]}%')
 
 
 
