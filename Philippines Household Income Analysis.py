@@ -246,13 +246,13 @@ bp(abroad_province_df, 61, -1)
 
 ordered_abroad_province_df = abroad_province_df.sort_values('Abroad Support %')
 
-print('The Provinces with the lowest percentage of households receiving remittances from abroad are:')
+print('The provinces with the lowest percentage of households receiving remittances from abroad are:')
 print(f'{ordered_abroad_province_df["Province"].values [0]} at {ordered_abroad_province_df["Abroad Support %"].values [0]}%')
 print(f'{ordered_abroad_province_df["Province"].values [1]} at {ordered_abroad_province_df["Abroad Support %"].values [1]}%')
 print(f'{ordered_abroad_province_df["Province"].values [2]} at {ordered_abroad_province_df["Abroad Support %"].values [2]}%')
 
 print()
-print('The Provinces with the highest percentage of households receiving remittances from abroad are')
+print('The provinces with the highest percentage of households receiving remittances from abroad are:')
 print(f'{ordered_abroad_province_df["Province"].values [-1]} at {ordered_abroad_province_df["Abroad Support %"].values [-1]}%')
 print(f'{ordered_abroad_province_df["Province"].values [-2]} at {ordered_abroad_province_df["Abroad Support %"].values [-2]}%')
 print(f'{ordered_abroad_province_df["Province"].values [-3]} at {ordered_abroad_province_df["Abroad Support %"].values [-3]}%')
