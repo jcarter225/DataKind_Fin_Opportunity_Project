@@ -11,16 +11,6 @@ import seaborn as sns
 from matplotlib import patches as mpatches
 import os
 
-# Set your desired path here
-path = '/Users/justincarter/Documents/Post Graduation Materials/DataKind Projects/MarApr2025Financial/Phillipines FEIS Survey/All Files 2023'
-
-# Change the working directory
-os.chdir(path)
-
-# Verify the change
-print("Current Working Directory: ", os.getcwd())
-
-
 survey = pd.read_csv('FIES PUF 2023 Volume2 Household Summary.CSV')
 meta = pd.read_excel('fies_2023_vol2_metadata(dictionary).xlsx')
 province_names = pd.read_excel('Province Names.xlsx')
