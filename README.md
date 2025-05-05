@@ -1,8 +1,12 @@
-![Visualization](Bank Availability by Region.png)
+
+
 # DataKind_Fin_Opportunity_Project
 This repository contains code and visualizations that were created in order to support DataKind's financial opportunity initiative. Volunteers were charged with visualizing a myriad of KPIs related to countries that could benefit from increased financial inclusion opportunities. The code for this project mainly serves to wrangle datasets concerning financial KPIs in the Philippines. The finalized visualizations relating to the aforementioned KPIs can found in the Final Dashboard.twx file: (https://github.com/jcarter225/DataKind_Fin_Opportunity_Project/blob/main/Final%20Dashboard.twbx) 
 
 As an alternative to downloading the tableau workbook, one can click the following link to view the interactive visualizations on the web: https://public.tableau.com/app/profile/justin.carter4940/viz/EconomicsofthePhilippines/Expenditure
+
+
+<img width="1913" alt="image" src="https://github.com/user-attachments/assets/3aca6673-0881-4dc4-85fb-69a6554aad4b" />
 
 Banking data was derived from: https://www.bsp.gov.ph/SitePages/Statistics/BSPhysicalNetwork.aspx 
 
