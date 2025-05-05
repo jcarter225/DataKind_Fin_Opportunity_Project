@@ -1,5 +1,5 @@
 # DataKind_Fin_Opportunity_Project
-This repository contains code and visualizations that were created in order to support DataKind's financial opportunity initiative. Volunteers were charged with visualizing a myriad of KPIs related to countries that could benefit from increased financial inclusion opportunities. The code for this project mainly serves to wrangle datasets concerning financial KPIs in the Philippines. 
+This repository contains code and visualizations that were created in order to support DataKind's financial opportunity initiative. Volunteers were charged with visualizing a myriad of KPIs related to countries that could benefit from increased financial inclusion opportunities. The code for this project mainly serves to wrangle datasets concerning financial KPIs in the Philippines. The finalized visualizations relating to the aforementioned KPIs can found [here] (https://github.com/jcarter225/DataKind_Fin_Opportunity_Project/blob/main/Final%20Dashboard.twbx)
 
 Banking data was derived from: https://www.bsp.gov.ph/SitePages/Statistics/BSPhysicalNetwork.aspx 
 
