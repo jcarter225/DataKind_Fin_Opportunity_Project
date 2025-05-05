@@ -1,5 +1,4 @@
-https://github.com/jcarter225/DataKind_Fin_Opportunity_Project/blob/main/Bank%20Availability%20by%20Region.png?raw=true![image](https://github.com/user-attachments/assets/1aa54954-2e32-4b63-8473-ebcf8451641e)
-
+![Visualization](Bank Availability by Region.png)
 # DataKind_Fin_Opportunity_Project
 This repository contains code and visualizations that were created in order to support DataKind's financial opportunity initiative. Volunteers were charged with visualizing a myriad of KPIs related to countries that could benefit from increased financial inclusion opportunities. The code for this project mainly serves to wrangle datasets concerning financial KPIs in the Philippines. The finalized visualizations relating to the aforementioned KPIs can found in the Final Dashboard.twx file: (https://github.com/jcarter225/DataKind_Fin_Opportunity_Project/blob/main/Final%20Dashboard.twbx) 
 
