@@ -6,7 +6,8 @@ This repository contains code and visualizations that were created in order to s
 As an alternative to downloading the tableau workbook, one can click the following link to view the interactive visualizations on the web: https://public.tableau.com/app/profile/justin.carter4940/viz/EconomicsofthePhilippines/Expenditure
 
 
-<img width="1913" alt="image" src="https://github.com/user-attachments/assets/3aca6673-0881-4dc4-85fb-69a6554aad4b" />
+<img width="1881" alt="image" src="https://github.com/user-attachments/assets/adef4dc9-6cdb-4493-be74-90157b9c1900" />
+
 
 Banking data was derived from: https://www.bsp.gov.ph/SitePages/Statistics/BSPhysicalNetwork.aspx 
 
